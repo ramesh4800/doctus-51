@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="31062d82-2a1c-4c30-b5ef-0aae067848e7" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="doctus-51Flow" doc:id="655751ad-924a-4ea3-b366-9cb1e163fc3f" >
+		<http:listener doc:name="Listener" doc:id="c9147c4e-8bab-45a5-a5d0-268d3cd23c2f" config-ref="HTTP_Listener_config" path="/demo"/>
+		<set-payload value="success" doc:name="Set Payload" doc:id="8425dd97-4b69-47bd-a07e-4df765185551" />
+		<logger level="INFO" doc:name="Logger" doc:id="a9f27006-1b08-4923-8c34-e4355f05df50" />
+	</flow>
+</mule>
